@@ -1,3 +1,13 @@
 .App {
-  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.Configuration-Section {
+  margin-bottom: 30px;
+}
+
+.Section-Separator {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
