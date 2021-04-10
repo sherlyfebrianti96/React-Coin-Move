@@ -1,12 +1,11 @@
 import React from 'react';
-import './CoinConfiguration.css';
+import './CoinDashboard.css';
 import {Row, Card} from "react-bootstrap";
 import StartingCoin from "../StartingCoin/StartingCoin";
 import NeededCoin from "../NeededCoin/NeededCoin";
 import {CoinValueInterface} from "../../interface/CoinValueInterface";
-import CoinMessage from "../CoinMessage/CoinMessage";
 
-interface CoinConfigurationProps {
+interface CoinDashboardProps {
   startingCoinArea: Array<CoinValueInterface>;
   neededCoinAmount: number | null;
   addCoinToStartedArea: (value: number) => any;
@@ -15,12 +14,12 @@ interface CoinConfigurationProps {
   resetApps?: () => void;
 }
 
-export default class CoinConfiguration extends React.PureComponent<CoinConfigurationProps> {
+export default class CoinDashboard extends React.PureComponent<CoinDashboardProps> {
   render() {
     return (
-      <Card className="Configuration-Section">
+      <Card className="Dashboard-Section">
         <Card.Header>
-          <h4>Configurations</h4>
+          <h4>Dashboard</h4>
         </Card.Header>
         <Card.Body>
           <Row>

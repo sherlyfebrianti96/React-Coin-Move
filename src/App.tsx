@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import CoinArea from "./components/CoinArea/CoinArea";
 import {Col, Container, Row} from "react-bootstrap";
-import CoinConfiguration from "./components/CoinConfiguration/CoinConfiguration";
+import CoinDashboard from "./components/CoinDashboard/CoinDashboard";
 import {DragDropContext, DropResult, ResponderProvided} from "react-beautiful-dnd";
 import {v4 as uuid} from "uuid";
 import {CoinValueInterface} from "./interface/CoinValueInterface";
@@ -100,7 +100,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Container className="App">
-        <CoinConfiguration
+        <CoinDashboard
           startingCoinArea={this.state.startingCoinArea}
           neededCoinArea={this.state.neededCoinArea}
           neededCoinAmount={this.state.neededCoinAmount}
