@@ -23,19 +23,19 @@ export default class StartingCoin extends React.PureComponent<StartingCoinProps>
         <Card>
           <Card.Body>
             <Row>
-              <Col>
+              <Col className="center-coin-col">
                 <Coin
                   value={CoinValueEnum.OneCent}
                   addCoinToStartedArea={this.props.addCoinToStartedArea.bind(this)}
                 />
               </Col>
-              <Col>
+              <Col className="center-coin-col">
                 <Coin
                   value={CoinValueEnum.FiveCent}
                   addCoinToStartedArea={this.props.addCoinToStartedArea.bind(this)}
                 />
               </Col>
-              <Col>
+              <Col className="center-coin-col">
                 <Coin
                   value={CoinValueEnum.TwentyCent}
                   addCoinToStartedArea={this.props.addCoinToStartedArea.bind(this)}

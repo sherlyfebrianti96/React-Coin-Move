@@ -32,6 +32,7 @@ class CoinArea extends React.PureComponent<CoinAreaProps> {
           {(provided: DraggableProvided, snapshot: DraggableStateSnapshot) => {
             return (
               <Col
+                className="center-coin-col"
                 ref={provided.innerRef}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
