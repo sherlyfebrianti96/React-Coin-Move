@@ -17,7 +17,6 @@ export default class App extends React.Component {
     this.setState({
       startingCoinArea: startingCoinArea
     });
-    console.log('this.state.startingCoinArea', this.state.startingCoinArea);
   }
 
   render() {
@@ -30,10 +29,19 @@ export default class App extends React.Component {
         />
         <Row>
           <Col>
-            <CoinArea name="starting-coin" title="Starting Coin"/>
+            <CoinArea
+              name="starting-coin"
+              title="Starting Coin"
+              coins={this.state.startingCoinArea}
+            />
           </Col>
           <Col>
-            <CoinArea name="needed-coin" title="Needed Coin"/>
+            <CoinArea
+              name="needed-coin"
+              title="Needed Coin"
+              coins={this.state.neededCoinArea}
+              sort={true}
+            />
           </Col>
         </Row>
       </Container>
