@@ -1,8 +1,7 @@
 import React from "react";
 import './CoinArea.css';
-import {Card, Col, Container, Row} from "react-bootstrap";
+import {Card, Col, Row} from "react-bootstrap";
 import Coin from "../Coin/Coin";
-import {CoinValueEnum} from "../../enum/CoinValueEnum";
 
 interface CoinAreaProps {
   name: string;
@@ -11,7 +10,7 @@ interface CoinAreaProps {
   sort?: boolean;
 }
 
-class CoinArea extends React.Component<CoinAreaProps> {
+class CoinArea extends React.PureComponent<CoinAreaProps> {
   render() {
     const areaId = `coin-area-${this.props.name}`;
     console.log(this.props.coins)

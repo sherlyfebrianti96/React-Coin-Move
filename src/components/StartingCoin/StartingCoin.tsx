@@ -9,7 +9,7 @@ interface StartingCoinProps {
   addCoinToStartedArea: (value: number) => any;
 }
 
-export default class StartingCoin extends React.Component<StartingCoinProps> {
+export default class StartingCoin extends React.PureComponent<StartingCoinProps> {
   render() {
     return (
       <Col>

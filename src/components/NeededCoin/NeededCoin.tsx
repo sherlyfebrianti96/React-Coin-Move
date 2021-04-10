@@ -7,7 +7,7 @@ interface NeededCoinProps {
   handleNeededCoinChanged: (value: number) => any;
 }
 
-export default class NeededCoin extends React.Component<NeededCoinProps> {
+export default class NeededCoin extends React.PureComponent<NeededCoinProps> {
   handleNeededCoinChanged(evt: React.ChangeEvent<HTMLInputElement>) {
     this.props.handleNeededCoinChanged(Number(evt.target.value));
   }

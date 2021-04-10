@@ -11,7 +11,7 @@ interface CoinConfigurationProps {
   handleNeededCoinChanged: (value: number) => any;
 }
 
-export default class CoinConfiguration extends React.Component<CoinConfigurationProps> {
+export default class CoinConfiguration extends React.PureComponent<CoinConfigurationProps> {
   render() {
     return (
       <Card className="Configuration-Section">
