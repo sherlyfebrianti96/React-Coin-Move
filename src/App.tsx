@@ -11,7 +11,7 @@ import {CoinValueEnum} from "./enum/CoinValueEnum";
 export default class App extends React.Component {
   state = {
     startingCoinArea: [],
-    neededCoinAmount: null,
+    neededCoinAmount: 0,
     neededCoinArea: []
   }
 
@@ -89,6 +89,14 @@ export default class App extends React.Component {
     return arr.sort((a, b) => (a.content - b.content));
   }
 
+  resetApps() {
+    this.setState({
+      startingCoinArea: [],
+      neededCoinAmount: 0,
+      neededCoinArea: []
+    });
+  }
+
   render() {
     return (
       <Container className="App">
@@ -112,6 +120,9 @@ export default class App extends React.Component {
                 name="needed-coin"
                 title="Needed Coin"
                 coins={this.state.neededCoinArea}
+                useMessage={true}
+                neededCoinAmount={this.state.neededCoinAmount}
+                resetApps={this.resetApps.bind(this)}
               />
             </Col>
           </Row>

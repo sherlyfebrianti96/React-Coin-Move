@@ -11,20 +11,22 @@ import {
   DroppableProvided,
   DroppableStateSnapshot
 } from "react-beautiful-dnd";
+import CoinMessage from "../CoinMessage/CoinMessage";
 
 interface CoinAreaProps {
   name: string;
   title: string;
   coins: Array<CoinValueInterface>;
+  useMessage?: boolean;
+  neededCoinAmount?: number | null;
+  resetApps?: () => void;
 }
 
 class CoinArea extends React.PureComponent<CoinAreaProps> {
   render() {
     const areaId = `coin-area-${this.props.name}`;
-    console.log(this.props.coins)
 
     const initialCoins = [...this.props.coins];
-
     const coins = initialCoins.map((coin: CoinValueInterface, index: number) => {
       const key = `${areaId}-${index}`;
       return (
@@ -71,11 +73,19 @@ class CoinArea extends React.PureComponent<CoinAreaProps> {
             );
           })}
         </Droppable>
-        {/*<Row>
-            {coins}
-          </Row>*/}
         <Card.Footer className="CoinInformation">
-          Current box value = {boxValue}
+          <Row>
+            <Col>
+              Current box value = {boxValue}
+            </Col>
+          </Row>
+          {this.props.useMessage && (
+            <CoinMessage
+              boxValue={boxValue}
+              resetApps={this.props.resetApps}
+              neededCoinAmount={this.props.neededCoinAmount}
+            />
+          )}
         </Card.Footer>
       </Card>
     );
