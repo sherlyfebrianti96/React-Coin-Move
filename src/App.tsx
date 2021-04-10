@@ -15,7 +15,7 @@ export default class App extends React.Component {
     const startingCoinArea: Array<number> = this.state.startingCoinArea;
     startingCoinArea.push(value);
     this.setState({
-      startingCoinArea: startingCoinArea
+      startingCoinArea: [...startingCoinArea]
     });
   }
 
