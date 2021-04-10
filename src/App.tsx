@@ -3,6 +3,9 @@ import './App.css';
 import CoinArea from "./components/CoinArea/CoinArea";
 import {Col, Container, Row} from "react-bootstrap";
 import CoinConfiguration from "./components/CoinConfiguration/CoinConfiguration";
+import {v4 as uuid} from "uuid";
+import {CoinValueInterface} from "./interface/CoinValueInterface";
+import {CoinValueEnum} from "./enum/CoinValueEnum";
 
 export default class App extends React.Component {
   state = {
@@ -11,9 +14,19 @@ export default class App extends React.Component {
     neededCoinArea: []
   }
 
-  addCoinToStartedArea(value: number) {
-    const startingCoinArea: Array<number> = this.state.startingCoinArea;
-    startingCoinArea.push(value);
+  area = {
+    startingCoinBox: {
+      name: 'Starting Coin',
+      items: []
+    }
+  };
+
+  addCoinToStartedArea(value: CoinValueEnum) {
+    const startingCoinArea: Array<CoinValueInterface> = this.state.startingCoinArea;
+    startingCoinArea.push({
+      id: uuid,
+      content: value
+    });
     this.setState({
       startingCoinArea: [...startingCoinArea]
     });

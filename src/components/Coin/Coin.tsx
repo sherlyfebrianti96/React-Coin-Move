@@ -4,7 +4,7 @@ import {CoinValueEnum} from "../../enum/CoinValueEnum";
 
 interface CoinContainerProps {
     value: CoinValueEnum;
-    addCoinToStartedArea?: (value: number) => any;
+    addCoinToStartedArea?: (value: CoinValueEnum) => any;
 }
 
 class Coin extends React.Component<CoinContainerProps> {

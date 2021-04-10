@@ -3,9 +3,10 @@ import './CoinConfiguration.css';
 import {Row, Card} from "react-bootstrap";
 import StartingCoin from "../StartingCoin/StartingCoin";
 import NeededCoin from "../NeededCoin/NeededCoin";
+import {CoinValueInterface} from "../../interface/CoinValueInterface";
 
 interface CoinConfigurationProps {
-  startingCoinArea: Array<number>;
+  startingCoinArea: Array<CoinValueInterface>;
   neededCoinAmount: number | null;
   addCoinToStartedArea: (value: number) => any;
   handleNeededCoinChanged: (value: number) => any;

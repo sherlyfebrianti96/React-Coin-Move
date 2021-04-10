@@ -2,11 +2,12 @@ import React from "react";
 import './CoinArea.css';
 import {Card, Col, Row} from "react-bootstrap";
 import Coin from "../Coin/Coin";
+import {CoinValueInterface} from "../../interface/CoinValueInterface";
 
 interface CoinAreaProps {
   name: string;
   title: string;
-  coins: Array<number>;
+  coins: Array<CoinValueInterface>;
   sort?: boolean;
 }
 
@@ -17,16 +18,16 @@ class CoinArea extends React.PureComponent<CoinAreaProps> {
 
     const initialCoins = [...this.props.coins];
     if (this.props.sort) {
-      initialCoins.sort((a, b) => (a - b));
+      initialCoins.sort((a, b) => (a.content - b.content));
     }
 
-    const coins = initialCoins.map((coin: number, index: number) => (
+    const coins = initialCoins.map((coin: CoinValueInterface, index: number) => (
       <Col key={`${areaId}-${index}`}>
-        <Coin value={coin} />
+        <Coin value={coin.content} />
       </Col>
     ));
 
-    const boxValue = initialCoins.reduce((a, b) => (a + b), 0);
+    const boxValue = initialCoins.reduce((a: number, b: CoinValueInterface) => (a + b.content), 0);
 
     return (
       <Card className="Coin-Area" id={areaId}>

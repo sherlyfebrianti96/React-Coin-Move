@@ -3,10 +3,11 @@ import './StartingCoin.css';
 import Coin from "../Coin/Coin";
 import {CoinValueEnum} from "../../enum/CoinValueEnum";
 import {Col, Row, Card} from "react-bootstrap";
+import {CoinValueInterface} from "../../interface/CoinValueInterface";
 
 interface StartingCoinProps {
-  startingCoinArea: Array<number>;
-  addCoinToStartedArea: (value: number) => any;
+  startingCoinArea: Array<CoinValueInterface>;
+  addCoinToStartedArea: (value: CoinValueEnum) => any;
 }
 
 export default class StartingCoin extends React.PureComponent<StartingCoinProps> {
