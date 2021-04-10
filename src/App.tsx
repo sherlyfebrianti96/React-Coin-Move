@@ -102,9 +102,11 @@ export default class App extends React.Component {
       <Container className="App">
         <CoinConfiguration
           startingCoinArea={this.state.startingCoinArea}
+          neededCoinArea={this.state.neededCoinArea}
           neededCoinAmount={this.state.neededCoinAmount}
           addCoinToStartedArea={this.addCoinToStartedArea.bind(this)}
           handleNeededCoinChanged={this.handleNeededCoinChanged.bind(this)}
+          resetApps={this.resetApps.bind(this)}
         />
         <DragDropContext onDragEnd={this.handleDragEnd.bind(this)}>
           <Row>
@@ -120,9 +122,6 @@ export default class App extends React.Component {
                 name="needed-coin"
                 title="Needed Coin"
                 coins={this.state.neededCoinArea}
-                useMessage={true}
-                neededCoinAmount={this.state.neededCoinAmount}
-                resetApps={this.resetApps.bind(this)}
               />
             </Col>
           </Row>

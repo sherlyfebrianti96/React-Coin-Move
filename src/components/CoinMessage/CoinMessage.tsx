@@ -1,9 +1,10 @@
 import React from "react";
 import {MessageStatusEnum} from "../../enum/MessageStatusEnum";
 import {Alert, Button, Col, Row} from "react-bootstrap";
+import {CoinValueInterface} from "../../interface/CoinValueInterface";
 
 interface CoinMessageProps {
-  boxValue: number;
+  neededCoinArea: Array<CoinValueInterface>;
   neededCoinAmount?: number | null;
   resetApps?: () => void;
 }
@@ -23,6 +24,7 @@ export default class CoinMessage extends React.PureComponent<CoinMessageProps> {
       return;
     }
 
+    const boxValue = this.props.neededCoinArea.reduce((a: number, b: CoinValueInterface) => (a + b.content), 0);
     switch (true) {
       case (!this.props.neededCoinAmount) :
         this.setState({
@@ -30,19 +32,19 @@ export default class CoinMessage extends React.PureComponent<CoinMessageProps> {
           messageContent: ''
         })
         break;
-      case (this.props.boxValue === this.props.neededCoinAmount) :
+      case (boxValue === this.props.neededCoinAmount) :
         this.setState({
           messageStatus: MessageStatusEnum.Success,
           messageContent: 'Needed coin has been fulfilled.'
         })
         break;
-      case (this.props.boxValue < this.props.neededCoinAmount) :
+      case (boxValue < this.props.neededCoinAmount) :
         this.setState({
           messageStatus: MessageStatusEnum.Error,
           messageContent: 'Please add more coin.'
         })
         break;
-      case (this.props.boxValue > this.props.neededCoinAmount) :
+      case (boxValue > this.props.neededCoinAmount) :
         this.setState({
           messageStatus: MessageStatusEnum.Error,
           messageContent: 'Please exchange some coins from the Needed Box.'
@@ -64,7 +66,7 @@ export default class CoinMessage extends React.PureComponent<CoinMessageProps> {
                 <span className="text-success">{this.state.messageContent}</span>
               </Col>
               <Col lg={3} xs={12} className="text-xl-right">
-                <Button variant="outline-secondary" size="sm" onClick={this.props.resetApps}>
+                <Button variant="secondary" size="sm" onClick={this.props.resetApps}>
                   Reset
                 </Button>
               </Col>

@@ -1,10 +1,14 @@
 import React from 'react';
 import './NeededCoin.css';
 import {Col, Row, FormControl} from "react-bootstrap";
+import CoinMessage from "../CoinMessage/CoinMessage";
+import {CoinValueInterface} from "../../interface/CoinValueInterface";
 
 interface NeededCoinProps {
   neededCoinAmount: number | null;
   handleNeededCoinChanged: (value: number) => any;
+  neededCoinArea: Array<CoinValueInterface>;
+  resetApps?: () => void;
 }
 
 export default class NeededCoin extends React.PureComponent<NeededCoinProps> {
@@ -36,6 +40,12 @@ export default class NeededCoin extends React.PureComponent<NeededCoinProps> {
             </FormControl>
           </Col>
         </Row>
+        <br/>
+        <CoinMessage
+          neededCoinArea={this.props.neededCoinArea}
+          resetApps={this.props.resetApps}
+          neededCoinAmount={this.props.neededCoinAmount}
+        />
       </Col>
     );
   }

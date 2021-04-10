@@ -11,15 +11,11 @@ import {
   DroppableProvided,
   DroppableStateSnapshot
 } from "react-beautiful-dnd";
-import CoinMessage from "../CoinMessage/CoinMessage";
 
 interface CoinAreaProps {
   name: string;
   title: string;
   coins: Array<CoinValueInterface>;
-  useMessage?: boolean;
-  neededCoinAmount?: number | null;
-  resetApps?: () => void;
 }
 
 class CoinArea extends React.PureComponent<CoinAreaProps> {
@@ -79,13 +75,6 @@ class CoinArea extends React.PureComponent<CoinAreaProps> {
               Current box value = {boxValue}
             </Col>
           </Row>
-          {this.props.useMessage && (
-            <CoinMessage
-              boxValue={boxValue}
-              resetApps={this.props.resetApps}
-              neededCoinAmount={this.props.neededCoinAmount}
-            />
-          )}
         </Card.Footer>
       </Card>
     );
