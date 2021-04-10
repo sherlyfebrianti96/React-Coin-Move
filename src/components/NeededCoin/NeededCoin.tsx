@@ -8,7 +8,7 @@ interface NeededCoinProps {
   neededCoinAmount: number | null;
   handleNeededCoinChanged: (value: number) => any;
   neededCoinArea: Array<CoinValueInterface>;
-  resetApps?: () => void;
+  resetApps: () => void;
 }
 
 export default class NeededCoin extends React.PureComponent<NeededCoinProps> {

@@ -6,77 +6,68 @@ import {CoinValueInterface} from "../../interface/CoinValueInterface";
 interface CoinMessageProps {
   neededCoinArea: Array<CoinValueInterface>;
   neededCoinAmount?: number | null;
-  resetApps?: () => void;
+  resetApps: () => void;
 }
 
 export default class CoinMessage extends React.PureComponent<CoinMessageProps> {
-  state = {
-    messageStatus: MessageStatusEnum.Empty,
-    messageContent: ''
-  };
-
   validateResult() {
+    const boxValue = this.props.neededCoinArea.reduce((a: number, b: CoinValueInterface) => (a + b.content), 0);
     if (!this.props.neededCoinAmount) {
-      this.setState({
+      return {
         messageStatus: MessageStatusEnum.Empty,
         messageContent: ''
-      })
-      return;
+      };
     }
-
-    const boxValue = this.props.neededCoinArea.reduce((a: number, b: CoinValueInterface) => (a + b.content), 0);
     switch (true) {
-      case (!this.props.neededCoinAmount) :
-        this.setState({
-          messageStatus: MessageStatusEnum.Empty,
-          messageContent: ''
-        })
-        break;
       case (boxValue === this.props.neededCoinAmount) :
-        this.setState({
+        return {
           messageStatus: MessageStatusEnum.Success,
           messageContent: 'Needed coin has been fulfilled.'
-        })
-        break;
+        };
       case (boxValue < this.props.neededCoinAmount) :
-        this.setState({
+        return {
           messageStatus: MessageStatusEnum.Error,
           messageContent: 'Please add more coin.'
-        })
-        break;
+        };
       case (boxValue > this.props.neededCoinAmount) :
-        this.setState({
+        return {
           messageStatus: MessageStatusEnum.Error,
           messageContent: 'Please exchange some coins from the Needed Box.'
-        })
-        break;
+        };
       default:
-        break;
+        return {
+          messageStatus: MessageStatusEnum.Empty,
+          messageContent: ''
+        };
     }
   }
 
+  handleResetClicked() {
+    this.props.resetApps();
+  }
+
   getResult() {
-    this.validateResult();
+    const validateResult = this.validateResult();
     switch (true) {
-      case (this.state.messageStatus === MessageStatusEnum.Success):
+      case (validateResult.messageStatus === MessageStatusEnum.Success):
         return (
           <Alert variant="success">
             <Row>
               <Col lg={9} xs={12}>
-                <span className="text-success">{this.state.messageContent}</span>
+                <span className="text-success">{validateResult.messageContent}</span>
               </Col>
               <Col lg={3} xs={12} className="text-xl-right">
-                <Button variant="secondary" size="sm" onClick={this.props.resetApps}>
+                <Button variant="secondary" size="sm" onClick={this.handleResetClicked.bind(this)}>
                   Reset
                 </Button>
               </Col>
             </Row>
           </Alert>
         );
-      case (this.state.messageStatus === MessageStatusEnum.Error):
+      case (validateResult.messageStatus === MessageStatusEnum.Error):
         return (
           <Alert variant="danger">
-            <span className="text-danger">{this.state.messageContent}</span>
+            <span className="text-danger">{validateResult.messageContent}</span>
           </Alert>
         );
       default:

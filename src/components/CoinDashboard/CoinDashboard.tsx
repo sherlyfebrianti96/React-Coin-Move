@@ -11,7 +11,7 @@ interface CoinDashboardProps {
   addCoinToStartedArea: (value: number) => any;
   handleNeededCoinChanged: (value: number) => any;
   neededCoinArea: Array<CoinValueInterface>;
-  resetApps?: () => void;
+  resetApps: () => void;
 }
 
 export default class CoinDashboard extends React.PureComponent<CoinDashboardProps> {
@@ -33,7 +33,7 @@ export default class CoinDashboard extends React.PureComponent<CoinDashboardProp
               neededCoinAmount={this.props.neededCoinAmount}
               handleNeededCoinChanged={this.props.handleNeededCoinChanged.bind(this)}
               neededCoinArea={this.props.neededCoinArea}
-              resetApps={this.props.resetApps}
+              resetApps={this.props.resetApps.bind(this)}
             />
           </Row>
         </Card.Body>
