@@ -2,7 +2,5 @@
 }
 
 .Coin-Area .Coin-Box {
-    border: 1px solid #999;
     min-height: 100px;
-    border-radius: 5px;
 }
