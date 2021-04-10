@@ -19,6 +19,12 @@ export default class App extends React.Component {
     });
   }
 
+  handleNeededCoinChanged(value: number) {
+    this.setState({
+      neededCoinAmount: value
+    });
+  }
+
   render() {
     return (
       <Container className="App">
@@ -26,6 +32,7 @@ export default class App extends React.Component {
           startingCoinArea={this.state.startingCoinArea}
           neededCoinAmount={this.state.neededCoinAmount}
           addCoinToStartedArea={this.addCoinToStartedArea.bind(this)}
+          handleNeededCoinChanged={this.handleNeededCoinChanged.bind(this)}
         />
         <Row>
           <Col>

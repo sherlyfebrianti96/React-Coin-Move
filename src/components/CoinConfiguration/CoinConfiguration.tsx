@@ -8,6 +8,7 @@ interface CoinConfigurationProps {
   startingCoinArea: Array<number>;
   neededCoinAmount: number | null;
   addCoinToStartedArea: (value: number) => any;
+  handleNeededCoinChanged: (value: number) => any;
 }
 
 export default class CoinConfiguration extends React.Component<CoinConfigurationProps> {
@@ -25,7 +26,10 @@ export default class CoinConfiguration extends React.Component<CoinConfiguration
               addCoinToStartedArea={this.props.addCoinToStartedArea.bind(this)}
             />
             {/* Needed Coin Configuration */}
-            <NeededCoin neededCoinAmount={this.props.neededCoinAmount}/>
+            <NeededCoin
+              neededCoinAmount={this.props.neededCoinAmount}
+              handleNeededCoinChanged={this.props.handleNeededCoinChanged.bind(this)}
+            />
           </Row>
         </Card.Body>
       </Card>
