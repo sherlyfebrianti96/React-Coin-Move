@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+# React Coin Move Application
+
+This is an application built in [React](https://reactjs.org/).
+
+We can move (drag) Coins from one area into another area.
+
+## How to Play
+
+Here is the complete [step-by-step (with image) about how to play the application](./documentation/step-by-step.md).
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
