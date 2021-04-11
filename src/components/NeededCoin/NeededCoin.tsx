@@ -34,6 +34,7 @@ export default class NeededCoin extends React.PureComponent<NeededCoinProps> {
               type="number"
               name="neededCoin"
               placeholder="Input the coin amount needed"
+              min={0}
               value={neededCoinAmount}
               onChange={this.handleNeededCoinChanged.bind(this)}
             >
