@@ -65,21 +65,6 @@ class Coin extends React.Component<CoinContainerProps> {
             </Col>
           </Row>
           {this.props.enableInput && this.getFormControl()}
-          {/*<div className="Coin" onClick={this.handleClick.bind(this)}>
-            <img src={src} alt={alt}/>
-          </div>
-          <div className="text-break" />
-          <div>
-            <FormControl
-              size="lg"
-              type="number"
-              name="neededCoin"
-              placeholder="Input the coin amount needed"
-              value={neededCoinAmount}
-              onChange={this.handleNeededCoinChanged.bind(this)}
-            >
-            </FormControl>
-          </div>*/}
         </Col>
       </Row>
     );
